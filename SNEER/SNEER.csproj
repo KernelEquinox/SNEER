@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{9AE91363-5730-473F-A6A2-997104FB8FE6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SotNEditor</RootNamespace>
+    <AssemblyName>SNEER</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationIcon>SNEER.ico</ApplicationIcon>
+    <StartupObject>SotNEditor.App</StartupObject>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HUD\Feedback.cs" />
+    <Compile Include="HUD\FeedbackEntry.cs" />
+    <Compile Include="HUD\FeedbackType.cs" />
+    <Compile Include="HUD\HilitePanels.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LogItem.cs" />
+    <Compile Include="Logging\LogItemType.cs" />
+    <Compile Include="Logging\LogItemTypeColorConverter.cs" />
+    <Compile Include="Logging\LogItemTypeFontWeightConverter.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MinimapControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SotNCommands.cs" />
+    <Compile Include="VRamViewer.xaml.cs">
+      <DependentUpon>VRamViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XnaRenderControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConfigFile\ConfigFile.csproj">
+      <Project>{9ae91363-5730-473f-a6a2-997104fb8fe2}</Project>
+      <Name>ConfigFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PsxVram\PsxVram.csproj">
+      <Project>{9ae91363-5730-473f-a6a2-997104fb8fe4}</Project>
+      <Name>PsxVram</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RenderControl\RenderControl.csproj">
+      <Project>{9ae91363-5730-473f-a6a2-997104fb8fe5}</Project>
+      <Name>RenderControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SotNCore\SotNCore.csproj">
+      <Project>{9ae91363-5730-473f-a6a2-997104fb8fe7}</Project>
+      <Name>SotNCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SotNMap\SotNMap.csproj">
+      <Project>{9ae91363-5730-473f-a6a2-997104fb8fe8}</Project>
+      <Name>SotNMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SotNReaders\SotNReaders.csproj">
+      <Project>{9ae91363-5730-473f-a6a2-997104fb8fe9}</Project>
+      <Name>SotNReaders</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VRamViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(ProjectDir)*.xnb" "$(ProjectDir)$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
